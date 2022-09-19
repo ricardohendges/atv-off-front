@@ -1,23 +1,31 @@
 <template>
-  <v-app>
-    <v-main>
-      <HelloWorld/>
-    </v-main>
-  </v-app>
+  <v-layout>
+    <v-app>
+      <headerSite/>
+      <footherSite/>
+      <navigatorSite/>
+      <v-main>
+        <v-container fluid>
+          <router-view></router-view>
+        </v-container>
+      </v-main>
+    </v-app>
+  </v-layout>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import headerSite from './components/layout/headerSite.vue'
+import footherSite from './components/layout/footerSite.vue'
+import navigatorSite from './components/layout/navigatorSite.vue'
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    headerSite,
+    footherSite,
+    navigatorSite
   },
 
-  data: () => ({
-    //
-  }),
+  data: () => ({  }),
 }
 </script>
