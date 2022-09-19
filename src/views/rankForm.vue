@@ -1,0 +1,3 @@
+<template>
+    rank
+</template>
