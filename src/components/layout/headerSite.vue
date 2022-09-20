@@ -21,13 +21,11 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Cookies from 'js-cookie'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
     methods:{
-        doLogout(){
-            Cookies.remove('auth')
-        }
+        ...mapActions('dupla', ['doLogout'])
     },
     computed: {
         ...mapGetters('dupla', ['userLogado'])

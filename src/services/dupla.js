@@ -28,4 +28,12 @@ export default class Dupla {
                 .catch(err => rej(err.response))
         })
     }
+
+    static async doLogout () {
+        return new Promise((res, rej) => {
+            clientAPI.get('/logout')
+                .then(processado => res(processado))
+                .catch(err => rej(err.response))
+        })
+    }
 }
