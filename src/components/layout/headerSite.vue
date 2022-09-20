@@ -6,14 +6,19 @@
         </div>
         <v-spacer></v-spacer>
         <div>
-            <strong class="subheading">MARATONA DE PROGRAMAÇÃO HORUS 2022</strong>
+            <h1 class="subheading">MARATONA DE PROGRAMAÇÃO HORUS 2022</h1>
         </div>
         <v-spacer></v-spacer>
-        <div>
-            Ricardo Hendges
-            <v-btn>
-                loggout
+        <div style="color:white">
+            <v-btn icon dark color="white">
+                <v-icon>mdi-logout</v-icon>
             </v-btn>
         </div>
     </v-app-bar>
 </template>
+
+<style>
+h1, h3 {
+  color: white;
+}
+</style>
