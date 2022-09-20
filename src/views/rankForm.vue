@@ -15,9 +15,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in desserts" :key="item.name">
-          <td>{{ item.name }}</td>
-          <td class="text-center">{{ item.calories }}</td>
+        <tr v-for="item in duplas" :key="item.name">
+          <td>{{ item.nome }}</td>
+          <td class="text-center">{{ item.id }}</td>
         </tr>
       </tbody>
     </v-table>
@@ -25,33 +25,26 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import formsTemplate from '../components/template/formsTemplate.vue'
+
 export default {
   components: {
     formsTemplate
   },
   data() {
     return {
-      listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
-      desserts: [
-        {
-          name: 'DJONATAN WILLENZ && IAN RAFAEL SCHMIDT',
-          calories: 159
-        },
-        {
-          name: 'FABIO WRZESINSKI && JOÃO VITOR MALLMANN',
-          calories: 237,
-        },
-        {
-          name: 'GABRIEL LUIZ KUNZ',
-          calories: 262,
-        },
-        {
-          name: 'GUILHERME GUTH ZAHN',
-          calories: 305,
-        }
-      ],
+      listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
     }
   },
+  computed: {
+    ...mapGetters('dupla', ['duplas'])
+  },  
+  methods: {
+    ...mapActions('dupla', ['getDuplas'])
+  },
+  mounted() {
+    this.getDuplas()
+  }
 }
 </script>
