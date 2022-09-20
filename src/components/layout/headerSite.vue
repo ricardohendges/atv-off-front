@@ -10,7 +10,7 @@
         </div>
         <v-spacer></v-spacer>
         <div style="color:white">
-            <v-btn icon dark color="white">
+            <v-btn icon dark color="white" to="/login">
                 <v-icon>mdi-logout</v-icon>
             </v-btn>
         </div>
