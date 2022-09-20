@@ -4,8 +4,10 @@ import rank from '../views/rankForm.vue'
 import submission from '../views/submissionForm.vue'
 import login from '../views/loginForm.vue'
 import Cookies from 'js-cookie'
+import store from '@/store'
 
 const validateLogin = async (_to, _from, next) => {
+    store.dispatch('dupla/getProfile')
     if(Cookies.get('auth')) next()
     next('/login')
 }

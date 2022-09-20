@@ -20,4 +20,12 @@ export default class Dupla {
                 .catch(err => rej(err.response))
         })
     }
+
+    static async getProfile () {
+        return new Promise((res, rej) => {
+            clientAPI.get('/user')
+                .then(processado => res(processado))
+                .catch(err => rej(err.response))
+        })
+    }
 }
