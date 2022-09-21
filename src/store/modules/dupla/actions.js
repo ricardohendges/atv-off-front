@@ -12,8 +12,7 @@ export const getDuplas = async ({ commit }, data) => {
 }
 
 export const getProfile = async ({ commit }) => {
-    const request = await Dupla.getProfile()
-    commit(types.SET_USER, request.data)
+    return await Dupla.getProfile().then(ret => commit(types.SET_USER, ret.data))
 }
 
 export const doLogout = async ({ commit }) => {

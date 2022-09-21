@@ -6,10 +6,12 @@ import login from '../views/loginForm.vue'
 import store from '@/store'
 
 const validateLogin = async (_to, _from, next) => {
-    await store.dispatch('dupla/getProfile')
-    if (store.getters['dupla/userLogado'])
+    try {
+        await store.dispatch('dupla/getProfile')
         next()
-    next('/login')
+    } catch (err) {
+        next('/login')
+    }
 }
 
 const routes = [
