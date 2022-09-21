@@ -25,7 +25,7 @@ import { mapGetters, mapActions } from 'vuex'
 
 export default {
     methods:{
-        ...mapActions('dupla', ['doLogout'])
+        ...mapActions('login', ['doLogout'])
     },
     computed: {
         ...mapGetters('login', ['userLogado'])

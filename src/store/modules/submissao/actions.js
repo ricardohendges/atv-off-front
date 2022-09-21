@@ -7,6 +7,10 @@ export const getSubmissao = async ({ commit }) => {
 }
 
 export const postSubmissao = async (_context, data) => {
-    const request = await Submissao.postSubmissao(data)
+    return await Submissao.postSubmissao(data)
+}
+
+export const patchSubmissao = async (_context, data) => {
+    const request = await Submissao.patchSubmissao(data)
     console.log(request)
 }

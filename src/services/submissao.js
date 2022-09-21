@@ -16,4 +16,12 @@ export default class Submissao {
                 .catch(err => rej(err.response))
         })
     }
+
+    static async patchSubmissao (data) {
+        return new Promise((res, rej) => {
+            clientAPI.patch('/submissao', data)
+                .then(processado => res(processado))
+                .catch(err => rej(err.response))
+        })
+    }
 }

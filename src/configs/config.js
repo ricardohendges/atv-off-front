@@ -4,7 +4,7 @@ import store from '@/store'
 axios.defaults.withCredentials = true
 
 const api = axios.create({
-    baseURL: process.env.VUE_APP_FULL_URL || 'https://10.102.10.56:3000',
+    baseURL: process.env.VUE_APP_FULL_URL || 'https://192.168.0.59:3000',
     headers: {}
 })
  

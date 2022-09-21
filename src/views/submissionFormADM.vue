@@ -26,11 +26,33 @@
             <v-btn color="#5C2715" size="small" rounded="pill" @click="showCodigo(item)">
               <v-icon color="white">mdi-eye-outline</v-icon>
             </v-btn>
+            <v-btn color="#5C2715" size="small" rounded="pill" @click="showChangeStatus(item)">
+              <v-icon color="white">mdi-keyboard-return</v-icon>
+            </v-btn>
           </td>
         </tr>
       </tbody>
     </v-table>
 
+    <v-dialog v-model="dialogChange">
+      <v-card>
+        <v-card-title class="text-h5">
+          Atualizar status da atividade ({{itemDialog.atv_code}}) - {{itemDialog.atv_titulo}}
+          <div>ID Submissão: {{itemDialog.sub_id}}</div>
+          <div>Usuário: {{itemDialog.dup_nome}}</div>
+        </v-card-title>
+        <v-select :items="statusPossiveis" v-model="newStatus" label="Novo Status Submissão"></v-select>
+        <v-card-text>
+          <v-textarea rows="10" readonly="true" v-model="itemDialog.sub_codigo" background-color="light-blue"
+            color="black" label="Código Fonte!">
+          </v-textarea>
+        </v-card-text>
+        <v-card-actions>
+          <v-btn color="#5C2715" text @click="dialogChange = false">Fechar</v-btn>
+          <v-btn color="#5C2715" text @click="sendSumissao()">Confirmar</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
 
     <v-dialog v-model="dialog">
       <v-card>
@@ -39,15 +61,9 @@
         </v-card-title>
         <v-card-text>
           <div>
-
           </div>
-          <v-textarea
-            rows="20"
-            readonly="true"
-            v-model="itemDialog.sub_codigo"
-            background-color="light-blue"
-            color="black"
-            label="Código Fonte!">
+          <v-textarea rows="20" readonly="true" v-model="itemDialog.sub_codigo" background-color="light-blue"
+            color="black" label="Código Fonte!">
           </v-textarea>
         </v-card-text>
         <v-card-actions>
@@ -65,7 +81,10 @@ import formsTemplate from '../components/template/formsTemplate.vue'
 export default {
   data() {
     return {
+      newStatus: null,
+      statusPossiveis: ['Accepted', 'Wrong answer', 'Presentation error', 'Runtime error', 'Time limit exceeded'],
       dialog: false,
+      dialogChange: false,
       itemDialog: null
     }
   },
@@ -76,9 +95,20 @@ export default {
     ...mapGetters('submissao', ['submissao'])
   },
   methods: {
-    ...mapActions('submissao', ['getSubmissao']),
+    ...mapActions('submissao', ['getSubmissao', 'postSubmissao', 'patchSubmissao']),
+    sendSumissao() {
+      this.dialogChange = false
+      let params = {}
+      params.sub_id = this.itemDialog.sub_id
+      params.status = this.newStatus
+      this.patchSubmissao(params).then(()=> this.getSubmissao())
+    },
     showCodigo(item) {
       this.dialog = true
+      this.itemDialog = item
+    },
+    showChangeStatus(item) {
+      this.dialogChange = true
       this.itemDialog = item
     }
   },
