@@ -8,7 +8,7 @@ export default {
             state.message.message = payload.message
         } else {
             state.message.type = 'ERRO'
-            state.message.message = payload.message
+            state.message.message = payload
         }
     },
     [types.DROP_MESSAGE] (state) {
