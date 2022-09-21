@@ -1,0 +1,1 @@
+export const submissao = (state) => state.submissao

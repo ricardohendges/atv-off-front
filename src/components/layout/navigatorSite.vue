@@ -17,7 +17,7 @@
         </v-list>
         <v-divider></v-divider>
         <v-list density="compact" nav>
-            <v-list-item prepend-icon="mdi-lock-outline" title="ADMIN" value="Admin" to="/submission"></v-list-item>
+            <v-list-item v-if="userLogado.isADM" prepend-icon="mdi-lock-outline" title="ADMIN" value="Admin" to="/submission"></v-list-item>
         </v-list>
     </v-navigation-drawer>
 </template>

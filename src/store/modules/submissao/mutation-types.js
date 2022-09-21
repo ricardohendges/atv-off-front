@@ -1,0 +1,1 @@
+export const GET_SUBMISSAO = "GET_SUBMISSAO"

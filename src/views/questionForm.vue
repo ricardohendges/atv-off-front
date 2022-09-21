@@ -1,6 +1,7 @@
 <template>
     <formsTemplate>
-        <v-table v-if="params" density="compact">
+        <h2>ATIVIDADES</h2>
+        <v-table density="compact">
             <thead>
                 <tr>
                     <th class="text-left">

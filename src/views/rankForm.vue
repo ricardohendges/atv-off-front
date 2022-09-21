@@ -1,5 +1,6 @@
 <template>
   <formsTemplate>
+    <h2>RANK</h2>
     <v-table density="compact">
       <thead>
         <tr>
