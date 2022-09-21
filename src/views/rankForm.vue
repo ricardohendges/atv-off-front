@@ -30,9 +30,12 @@
               large
               color="red-lighten-2"
             >mdi-thumb-down</v-icon>
+            <h6>{{ item.atividades.find(a=> a.atv_code == itemAtv)?.pontos }}</h6>
           </td>
-          <td>{{ item.finalizadas }}</td>
-          <td>{{ item.pontos }}</td>
+          <td class="text-center">
+            <h3>{{ item.finalizadas }}</h3>
+            <h6>{{ item.pontos }}</h6>
+          </td>
         </tr>
       </tbody>
     </v-table>

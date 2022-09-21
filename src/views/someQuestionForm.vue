@@ -18,6 +18,15 @@
         <div>
             {{filterAtividade.atv_saida}}
         </div>
+
+        <v-textarea
+            rows="20"
+            v-model="codigo"
+            background-color="light-blue"
+            color="black"
+            label="Código Fonte!">
+        </v-textarea>
+        <v-btn variant="outlined" @click="sendSumissao()">Enviar!</v-btn>
     </formsTemplate>
 </template>
   
@@ -31,6 +40,7 @@ export default {
     },
     data() {
         return {
+            codigo: null,
             params: null,
             filterAtividade: {}
         }
@@ -39,15 +49,22 @@ export default {
         ...mapGetters('atividade', ['atividades'])
     },
     methods: {
-        ...mapActions('atividade', ['getAtividades'])
+        ...mapActions('atividade', ['getAtividades']),
+        ...mapActions('submissao', ['postSubmissao']),
+        sendSumissao() {
+            let params = {}
+            params.atv_id = this.filterAtividade.atv_id
+            params.codigo = this.codigo
+            params.status = '- in queue -'
+            console.log(params)
+            this.postSubmissao(params)
+        }
     },
     mounted() {
         this.getAtividades()
     },
     watch: {
         atividades() {
-            console.log(this.atividades)
-            console.log(this.$route.params)
             this.filterAtividade = this.atividades.find((a) => a.atv_code == this.$route.params.id)
         }
     }

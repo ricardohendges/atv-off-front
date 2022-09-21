@@ -5,3 +5,8 @@ export const getSubmissao = async ({ commit }) => {
     const request = await Submissao.getSubmissao()
     commit(types.GET_SUBMISSAO, request.data.submissao)
 }
+
+export const postSubmissao = async (_context, data) => {
+    const request = await Submissao.postSubmissao(data)
+    console.log(request)
+}
