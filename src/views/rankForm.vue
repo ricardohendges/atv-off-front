@@ -15,9 +15,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in duplas" :key="item.name">
-          <td>{{ item.nome }}</td>
-          <td class="text-center">{{ item.id }}</td>
+        <tr v-for="item in duplas" :key="item.dup_name">
+          <td>{{ item.dup_nome }}</td>
+          <td class="text-center">{{ item.dup_id }}</td>
         </tr>
       </tbody>
     </v-table>

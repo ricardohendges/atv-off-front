@@ -23,14 +23,14 @@
             </thead>
             <tbody>
                 <tr v-for="item in atividades" :key="item.id">
-                    <td>{{ item.code }}</td>
-                    <td>{{ item.titulo }}</td>
-                    <td class="text-center">{{ item.dificuldade }}</td>
-                    <td class="text-center">{{ item.quantidade }}</td>
+                    <td>{{ item.atv_code }}</td>
+                    <td>{{ item.atv_titulo }}</td>
+                    <td class="text-center">{{ item.atv_dificuldade }}</td>
+                    <td class="text-center">{{ item.atv_quantidade }}</td>
                     <td class="text-center">processando</td>
                     <td class="text-center">
                         <v-btn
-                            :to="`/question/${item.code}`"
+                            :to="`/question/${item.atv_code}`"
                             color="#5C2715"
                             size="small"
                             rounded="pill">

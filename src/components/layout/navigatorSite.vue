@@ -15,6 +15,10 @@
             <v-list-item prepend-icon="mdi-clipboard-list-outline" title="Atividades" value="question" to="/question"></v-list-item>
             <v-list-item prepend-icon="mdi-database-sync-outline" title="Submissões" value="submission" to="/submission"></v-list-item>
         </v-list>
+        <v-divider></v-divider>
+        <v-list density="compact" nav>
+            <v-list-item prepend-icon="mdi-lock-outline" title="ADMIN" value="Admin" to="/submission"></v-list-item>
+        </v-list>
     </v-navigation-drawer>
 </template>
 
@@ -24,16 +28,11 @@ export default {
     data() {
         return {
             drawer: true,
-            items: [
-                { title: 'Home', icon: 'mdi-home-city' },
-                { title: 'My Account', icon: 'mdi-account' },
-                { title: 'Users', icon: 'mdi-account-group-outline' },
-            ],
             rail: true,
         }
     },
     computed: {
-        ...mapGetters('dupla', ['userLogado'])
+        ...mapGetters('login', ['userLogado'])
     }
 }
 </script>

@@ -28,7 +28,7 @@ export default {
         ...mapActions('dupla', ['doLogout'])
     },
     computed: {
-        ...mapGetters('dupla', ['userLogado'])
+        ...mapGetters('login', ['userLogado'])
     }
 }
 </script>

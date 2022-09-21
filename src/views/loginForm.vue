@@ -28,7 +28,7 @@ export default {
       }
    },
    methods: {
-      ...mapActions('dupla', ['doLogin']),
+      ...mapActions('login', ['doLogin']),
       loginAwait () {
          this.doLogin({user: this.user, pass: this.pass})
             .then(() => this.$router.push('/'))

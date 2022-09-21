@@ -1,0 +1,1 @@
+export const userLogado = (state) => state.userLogado

@@ -8,7 +8,7 @@ import store from '@/store'
 
 const validateLogin = async (_to, _from, next) => {
     try {
-        await store.dispatch('dupla/getProfile')
+        await store.dispatch('login/getProfile')
         next()
     } catch (err) {
         next('/login')

@@ -1,22 +1,22 @@
 <template>
     <formsTemplate>
         <h2>
-            {{filterAtividade.titulo}}
+            {{filterAtividade.atv_titulo}}
         </h2>
         <div>
-            {{filterAtividade.descricao}}
+            {{filterAtividade.atv_descricao}}
         </div>
         <h3>
             Entrada
         </h3>
         <div>
-            {{filterAtividade.entrada}}
+            {{filterAtividade.atv_entrada}}
         </div>
         <h3>
             Saida
         </h3>
         <div>
-            {{filterAtividade.saida}}
+            {{filterAtividade.atv_saida}}
         </div>
     </formsTemplate>
 </template>
@@ -48,7 +48,7 @@ export default {
         atividades() {
             console.log(this.atividades)
             console.log(this.$route.params)
-            this.filterAtividade = this.atividades.find((a) => a.code == this.$route.params.id)
+            this.filterAtividade = this.atividades.find((a) => a.atv_code == this.$route.params.id)
         }
     }
 }
