@@ -16,9 +16,23 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in duplas" :key="item.dup_name">
+        <tr v-for="item in rankList" :key="item.dup_id">
           <td>{{ item.dup_nome }}</td>
-          <td class="text-center">{{ item.dup_id }}</td>
+          <td class="text-center" v-for="itemAtv in listAtividades" :key="itemAtv" >
+            {{ item.atividades.find(a=> a.atv_code == itemAtv)?.qtdeTentado }}
+            <v-icon
+              v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Accepted'"
+              large
+              color="green darken-2"
+            >mdi-thumb-up</v-icon>
+            <v-icon
+              v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Tried'"
+              large
+              color="red-lighten-2"
+            >mdi-thumb-down</v-icon>
+          </td>
+          <td>{{ item.finalizadas }}</td>
+          <td>{{ item.pontos }}</td>
         </tr>
       </tbody>
     </v-table>
@@ -39,13 +53,13 @@ export default {
     }
   },
   computed: {
-    ...mapGetters('dupla', ['duplas'])
+    ...mapGetters('rank', ['rankList'])
   },  
   methods: {
-    ...mapActions('dupla', ['getDuplas'])
+    ...mapActions('rank', ['getRank'])
   },
   mounted() {
-    this.getDuplas()
+    this.getRank()
   }
 }
 </script>

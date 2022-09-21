@@ -5,6 +5,7 @@ import dupla from './modules/dupla'
 import message from './modules/message'
 import atividade from './modules/atividade'
 import submissao from './modules/submissao'
+import rank from './modules/rank'
 
 export default createStore({
   modules: {
@@ -12,6 +13,7 @@ export default createStore({
     message,
     atividade,
     login,
-    submissao
+    submissao,
+    rank
   }
 })
