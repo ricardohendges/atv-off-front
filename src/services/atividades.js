@@ -8,4 +8,11 @@ export default class Atividades {
                 .catch(err => rej(err.response))
         })
     }
+    static async getExemplos (data) {
+        return new Promise((res, rej) => {
+            clientAPI.get(`/exemplos/${data}`)
+                .then(processado => res(processado))
+                .catch(err => rej(err.response))
+        })
+    }
 }

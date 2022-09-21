@@ -18,6 +18,7 @@
         <div>
             {{filterAtividade.atv_saida}}
         </div>
+        {{exemplos}}
 
         <v-textarea
             rows="20"
@@ -46,10 +47,10 @@ export default {
         }
     },
     computed: {
-        ...mapGetters('atividade', ['atividades'])
+        ...mapGetters('atividade', ['atividades', 'exemplos'])
     },
     methods: {
-        ...mapActions('atividade', ['getAtividades']),
+        ...mapActions('atividade', ['getAtividades', 'getExemplos']),
         ...mapActions('submissao', ['postSubmissao']),
         sendSumissao() {
             let params = {}
@@ -66,6 +67,9 @@ export default {
     watch: {
         atividades() {
             this.filterAtividade = this.atividades.find((a) => a.atv_code == this.$route.params.id)
+        },
+        filterAtividade(){
+            this.getExemplos(this.filterAtividade.atv_id)
         }
     }
 }
