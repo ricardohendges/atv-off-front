@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import questions from '../views/questionForm.vue'
+import someQuestions from '../views/someQuestionForm.vue'
 import rank from '../views/rankForm.vue'
 import submission from '../views/submissionForm.vue'
 import login from '../views/loginForm.vue'
@@ -19,7 +20,7 @@ const routes = [
     { path: '/',             name: 'rank',         component: rank,       beforeEnter: validateLogin},
     { path: '/submission',   name: 'submission',   component: submission, beforeEnter: validateLogin},
     { path: '/question',     name: 'question',     component: questions,  beforeEnter: validateLogin},
-    { path: '/question/:id', name: 'someQuestion', component: questions,  beforeEnter: validateLogin},
+    { path: '/question/:id', name: 'someQuestion', component: someQuestions,  beforeEnter: validateLogin},
 ]
 const router = createRouter({
     history: createWebHistory(),

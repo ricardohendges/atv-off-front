@@ -1,0 +1,1 @@
+export const GET_ATIVIDADES = "GET_ATIVIDADES"
