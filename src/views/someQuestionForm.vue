@@ -3,31 +3,64 @@
         <h2>
             {{filterAtividade.atv_titulo}}
         </h2>
-        <div>
-            {{filterAtividade.atv_descricao}}
-        </div>
-        <h3>
-            Entrada
-        </h3>
-        <div>
-            {{filterAtividade.atv_entrada}}
-        </div>
-        <h3>
-            Saida
-        </h3>
-        <div>
-            {{filterAtividade.atv_saida}}
-        </div>
-        {{exemplos}}
-
-        <v-textarea
-            rows="20"
-            v-model="codigo"
-            background-color="light-blue"
-            color="black"
-            label="Código Fonte!">
-        </v-textarea>
-        <v-btn variant="outlined" @click="sendSumissao()">Enviar!</v-btn>
+        <v-row>
+            <v-col cols="12" md="8">
+                <div>
+                    {{filterAtividade.atv_descricao}}
+                </div>
+                <h3>
+                    Entrada
+                </h3>
+                <div>
+                    {{filterAtividade.atv_entrada}}
+                </div>
+                <h3>
+                    Saida
+                </h3>
+                <div>
+                    {{filterAtividade.atv_saida}}
+                </div>
+                
+                <v-row style="margin-top:10px" v-for="item in exemplos" :key="item.exe_id">
+                    <v-col cols="12" md="6">
+                        <v-card class="mx-auto" max-width="344" variant="outlined">
+                            <v-card-item>
+                                <div>
+                                    <div class="text-overline mb-1">
+                                        Exemplo de entrada
+                                    </div>
+                                    <div class="text-caption">{{item.exe_entrada}}</div>
+                                </div>
+                            </v-card-item>
+                        </v-card>
+                        <!-- <v-textarea rows="5" v-model="item.exe_entrada" readonly="true" background-color="light-blue"
+                            color="black" label="EXEMPLO DE ENTRADA">
+                        </v-textarea> -->
+                    </v-col>
+                    <v-col cols="12" md="6">
+                        <v-card class="mx-auto" max-width="344" variant="outlined">
+                            <v-card-item>
+                                <div>
+                                    <div class="text-overline mb-1">
+                                        Exemplo de saída
+                                    </div>
+                                    <div class="text-caption">{{item.exe_saida}}</div>
+                                </div>
+                            </v-card-item>
+                        </v-card>
+                        <!-- <v-textarea rows="5" readonly="true" v-model="item.exe_saida" background-color="light-blue"
+                            color="black" label="EXEMPLO DE SAIDA">
+                        </v-textarea> -->
+                    </v-col>
+                </v-row>
+            </v-col>
+            <v-col cols="12" md="4">
+                <v-textarea rows="20" v-model="codigo" background-color="light-blue" color="black"
+                    label="Código Fonte!">
+                </v-textarea>
+                <v-btn variant="outlined" @click="sendSumissao()">Enviar!</v-btn>
+            </v-col>
+        </v-row>
     </formsTemplate>
 </template>
   
@@ -68,7 +101,7 @@ export default {
         atividades() {
             this.filterAtividade = this.atividades.find((a) => a.atv_code == this.$route.params.id)
         },
-        filterAtividade(){
+        filterAtividade() {
             this.getExemplos(this.filterAtividade.atv_id)
         }
     }
