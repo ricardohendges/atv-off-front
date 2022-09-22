@@ -1,22 +1,25 @@
 <template>
   <formsTemplate>
     <h2>SUBMISSÕES</h2>
+    <v-select :items="statusPossiveis" multiple v-model="filterStatus" label="Novo Status Submissão"></v-select>
     <v-table density="compact">
       <thead>
         <tr>
           <th class="text-left">ID</th>
           <th class="text-left">Atividade</th>
           <th class="text-left">Título</th>
+          <th class="text-left">Dupla</th>
           <th class="text-center">Status</th>
           <th class="text-center">Data</th>
           <th class="text-center">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in submissao" :key="item.sub_id">
+        <tr v-for="item in localSubmissoes" :key="item.sub_id">
           <td>{{ item.sub_id }}</td>
           <td>{{ item.atv_code }}</td>
           <td>{{ item.atv_titulo }}</td>
+          <td>{{ item.dup_nome }}</td>
           <td class="text-center">{{ item.sub_status }}</td>
           <td class="text-center">{{ (new Date(item.sub_data)).toLocaleString() }}</td>
           <td class="text-center">
@@ -81,8 +84,10 @@ import formsTemplate from '../components/template/formsTemplate.vue'
 export default {
   data() {
     return {
+      localSubmissoes: null,
+      filterStatus: null,
       newStatus: null,
-      statusPossiveis: ['Accepted', 'Wrong answer', 'Presentation error', 'Runtime error', 'Time limit exceeded'],
+      statusPossiveis: ['- in queue -', 'Accepted', 'Wrong answer', 'Presentation error', 'Runtime error', 'Time limit exceeded'],
       dialog: false,
       dialogChange: false,
       itemDialog: null
@@ -114,6 +119,17 @@ export default {
   },
   mounted() {
     this.getSubmissao()
+  },
+  watch: {
+    submissao(){
+      this.localSubmissoes = this.submissao
+    },
+    filterStatus(){
+      if (this.filterStatus.length)
+        this.localSubmissoes = this.submissao.filter(a => this.filterStatus.includes(a.sub_status))
+      else 
+        this.localSubmissoes = this.submissao
+    }
   }
 }
 </script>

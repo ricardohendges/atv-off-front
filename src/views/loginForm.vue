@@ -1,7 +1,7 @@
 <template>
    <div class="divMain">
       <div class="divImg">
-         <v-img height="900" src="../assets/teste4.jpg"> </v-img>
+         <v-img height="100%" src="../assets/background.jpg"> </v-img>
       </div>
       <div class="divLogin">
          <v-card style="height: 100%">
@@ -109,11 +109,11 @@ export default {
 .divMain {
    display: flex;
    width: 100%;
-   height: 655px;
+   height: 100%;
 }
 
 .divImg {
-   width: 60%;
+   width: 100%;
    height: 100%;
    background: #0b0e17;
 }
