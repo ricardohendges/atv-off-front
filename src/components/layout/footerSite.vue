@@ -4,8 +4,8 @@
             Copyright (c) 2022 Ricardo Jeferson Hendges
         </div>
         <v-spacer></v-spacer>
-        <!-- <div class="text-righ">
+        <div class="text-righ">
             Designer: Odair Sehn
-        </div> -->
+        </div>
     </v-footer>
 </template>
