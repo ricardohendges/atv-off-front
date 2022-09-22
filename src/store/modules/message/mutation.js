@@ -6,9 +6,11 @@ export default {
         if (payload.type && payload.message) {
             state.message.type = payload.type
             state.message.message = payload.message
+            state.message.detail = payload.detail
         } else {
             state.message.type = 'ERRO'
-            state.message.message = payload
+            state.message.message = payload.message ? payload.message : payload
+            state.message.detail = payload?.detail
         }
     },
     [types.DROP_MESSAGE] (state) {
