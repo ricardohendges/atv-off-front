@@ -5,7 +5,9 @@
         </h2>
         <v-row>
             <v-col cols="12" md="8">
-                <div> {{filterAtividade.atv_descricao}} </div>
+                <p style="white-space: pre-line;"> {{filterAtividade.atv_descricao}} 
+                    <v-img v-if="this.$route.params.id=='I'" height="250px" src="../assets/atv_i.png"></v-img>
+                </p>
                 <h3> Entrada </h3>
                 <div> {{filterAtividade.atv_entrada}} </div>
                 <h3> Saida </h3>
@@ -13,7 +15,7 @@
                 
                 <v-row style="margin-top:10px" v-for="item in exemplos" :key="item.exe_id">
                     <v-col cols="12" md="6">
-                        <v-card class="mx-auto" max-width="344" variant="outlined">
+                        <!-- <v-card class="mx-auto" max-width="344" variant="outlined">
                             <v-card-item>
                                 <div>
                                     <div class="text-overline mb-1">
@@ -22,13 +24,13 @@
                                     <div class="text-caption">{{item.exe_entrada}}</div>
                                 </div>
                             </v-card-item>
-                        </v-card>
-                        <!-- <v-textarea rows="5" v-model="item.exe_entrada" readonly="true" background-color="light-blue"
+                        </v-card> -->
+                        <v-textarea auto-grow="true" no-resize rows="1" v-model="item.exe_entrada" readonly="true" background-color="light-blue"
                             color="black" label="EXEMPLO DE ENTRADA">
-                        </v-textarea> -->
+                        </v-textarea>
                     </v-col>
                     <v-col cols="12" md="6">
-                        <v-card class="mx-auto" max-width="344" variant="outlined">
+                        <!-- <v-card class="mx-auto" max-width="344" variant="outlined">
                             <v-card-item>
                                 <div>
                                     <div class="text-overline mb-1">
@@ -37,10 +39,10 @@
                                     <div class="text-caption">{{item.exe_saida}}</div>
                                 </div>
                             </v-card-item>
-                        </v-card>
-                        <!-- <v-textarea rows="5" readonly="true" v-model="item.exe_saida" background-color="light-blue"
+                        </v-card> -->
+                        <v-textarea auto-grow="true" no-resize rows="1" readonly="true" v-model="item.exe_saida" background-color="light-blue"
                             color="black" label="EXEMPLO DE SAIDA">
-                        </v-textarea> -->
+                        </v-textarea>
                     </v-col>
                 </v-row>
             </v-col>

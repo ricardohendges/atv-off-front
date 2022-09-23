@@ -2,7 +2,7 @@
 <v-app>
    <div class="divMain">
       <div class="divImg">
-         <v-img  height="100%" width="100%" cover src="../assets/teste.jpg"> </v-img>
+         <v-img  height="100%" width="100%" cover src="../assets/background.jpg"> </v-img>
       </div>
       <div class="divLogin">
          <v-card style="height: 100%">
