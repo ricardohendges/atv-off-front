@@ -1,14 +1,15 @@
 <template>
+<v-app>
    <div class="divMain">
       <div class="divImg">
-         <v-img height="100%" src="../assets/background.jpg"> </v-img>
+         <v-img  height="100%" width="100%" cover src="../assets/teste.jpg"> </v-img>
       </div>
       <div class="divLogin">
          <v-card style="height: 100%">
-            <v-card-title style="text-align: center; margin-top: 35px">Faça login para continuar</v-card-title>
+            <v-card-title style="text-align: center; margin-top: 20%">Faça login para continuar</v-card-title>
             <v-spacer></v-spacer>
             <v-card-text>
-               <v-form style="margin-top: 80px; height: 100%;">
+               <v-form style="margin-top: 15%; height: 100%;">
                   <div class="divInputs">
                      <v-text-field variant="outlined" placeholder="Digite o usuário" prepend-inner-icon="mdi-account"
                         name="login" label="User" v-model="user">
@@ -47,6 +48,7 @@
                      <v-text-field variant="outlined" label="Digite a senha" id="password" prepend-inner-icon="mdi-lock"
                         name="password" type="password" v-model="newPass">
                      </v-text-field>
+                     <v-spacer></v-spacer>
                      <v-text-field variant="outlined" label="Repita a senha" id="password" prepend-inner-icon="mdi-lock"
                         name="password" type="password" v-model="confirmNewPass">
                      </v-text-field>
@@ -63,6 +65,7 @@
          </v-row>
       </template>
    </div>
+   </v-app>
 </template>
 
 
@@ -113,14 +116,12 @@ export default {
 }
 
 .divImg {
-   width: 100%;
-   height: 100%;
+   width: 69%;
    background: #0b0e17;
 }
 
 .divLogin {
    width: 40%;
-   height: 100%;
 }
 
 .divInputs {
@@ -134,14 +135,16 @@ export default {
    display: flex;
    align-items: center;
    justify-content: center;
-   margin-top: 40px;
+   margin-top: 10%;
 }
 
 .footer {
-   position: relative;
-   top: 158px;
-   margin-left: 10px;
+   margin: auto;
+   width: 100%;
+   bottom: 0;
+   position: fixed;
    color: rgb(97, 92, 92);
    font-size: 15px;
+   margin: 0 0 5px 10px;
 }
 </style>
