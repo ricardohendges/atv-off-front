@@ -6,9 +6,12 @@
              :title="getTitle()"
              class="align-center justify-center"
     >
-      <div class="d-flex flex-row align-center justify-space-between">
+      <div class="align-center">
         <div>
           {{getMessage.message}}
+        </div>
+        <div>
+          {{getMessage.detail}}
         </div>
         <div style="text-align: right; margin-left:20px">
           <v-btn id="btnClose" @click="dropMessage()" variant="outlined" icon>ok</v-btn>
