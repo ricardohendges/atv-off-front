@@ -5,21 +5,11 @@
         </h2>
         <v-row>
             <v-col cols="12" md="8">
-                <div>
-                    {{filterAtividade.atv_descricao}}
-                </div>
-                <h3>
-                    Entrada
-                </h3>
-                <div>
-                    {{filterAtividade.atv_entrada}}
-                </div>
-                <h3>
-                    Saida
-                </h3>
-                <div>
-                    {{filterAtividade.atv_saida}}
-                </div>
+                <div> {{filterAtividade.atv_descricao}} </div>
+                <h3> Entrada </h3>
+                <div> {{filterAtividade.atv_entrada}} </div>
+                <h3> Saida </h3>
+                <div> {{filterAtividade.atv_saida}} </div>
                 
                 <v-row style="margin-top:10px" v-for="item in exemplos" :key="item.exe_id">
                     <v-col cols="12" md="6">

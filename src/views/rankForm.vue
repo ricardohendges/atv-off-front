@@ -59,7 +59,7 @@ export default {
     ...mapGetters('rank', ['rankList'])
   },  
   methods: {
-    ...mapActions('rank', ['getRank'])
+    ...mapActions('rank', ['getRank']),
   },
   mounted() {
     this.getRank()

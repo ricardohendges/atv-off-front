@@ -4,21 +4,11 @@
         <v-table density="compact">
             <thead>
                 <tr>
-                    <th class="text-left">
-                        Code
-                    </th>
-                    <th class="text-left">
-                        Título
-                    </th>
-                    <th class="text-center">
-                        Dificuldade
-                    </th>
-                    <th class="text-center">
-                        Resolvidas
-                    </th>
-                    <th class="text-center">
-                        Status
-                    </th>
+                    <th class="text-left"> Code </th>
+                    <th class="text-left"> Título </th>
+                    <th class="text-center"> Dificuldade </th>
+                    <th class="text-center"> Resolvidas </th>
+                    <th class="text-center"> Status </th>
                     <th></th>
                 </tr>
             </thead>
@@ -28,7 +18,9 @@
                     <td>{{ item.atv_titulo }}</td>
                     <td class="text-center">{{ item.atv_dificuldade }}</td>
                     <td class="text-center">{{ item.atv_quantidade }}</td>
-                    <td class="text-center">processando</td>
+                    <td class="text-center">
+                        <chipRJH :status="item.atv_status"/>
+                    </td>
                     <td class="text-center">
                         <v-btn
                             :to="`/question/${item.atv_code}`"
@@ -47,14 +39,15 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import formsTemplate from '../components/template/formsTemplate.vue'
+import chipRJH from '../components/molecula/chipRJH.vue'
 
 export default {
     components: {
-        formsTemplate
+        formsTemplate, 
+        chipRJH
     },
     data() {
         return {
-            params: null,
             listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
         }
     },
@@ -66,8 +59,6 @@ export default {
     },
     mounted() {
         this.getAtividades()
-        this.params = this.$route.params
-        console.log(this.params)
     },
 }
 </script>

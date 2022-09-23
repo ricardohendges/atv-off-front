@@ -20,7 +20,9 @@
           <td>{{ item.atv_code }}</td>
           <td>{{ item.atv_titulo }}</td>
           <td>{{ item.dup_nome }}</td>
-          <td class="text-center">{{ item.sub_status }}</td>
+          <td class="text-center">
+            <chipRJH :status="item.sub_status"/>
+          </td>
           <td class="text-center">{{ (new Date(item.sub_data)).toLocaleString() }}</td>
           <td class="text-center">
             <v-btn :to="`/question/${item.atv_code}`" color="#5C2715" size="small" rounded="pill">
@@ -81,6 +83,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import formsTemplate from '../components/template/formsTemplate.vue'
+import chipRJH from '../components/molecula/chipRJH.vue'
 export default {
   data() {
     return {
@@ -94,7 +97,8 @@ export default {
     }
   },
   components: {
-    formsTemplate
+    formsTemplate,
+    chipRJH
   },
   computed: {
     ...mapGetters('submissao', ['submissao'])
