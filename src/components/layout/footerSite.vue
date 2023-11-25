@@ -5,10 +5,6 @@
         </div>
         <v-spacer></v-spacer>
         <div>{{userLogado.nome}}</div>
-        <v-spacer></v-spacer>
-        <div class="text-righ">
-            Designer: Odair Sehn
-        </div>
     </v-footer>
 </template>
 

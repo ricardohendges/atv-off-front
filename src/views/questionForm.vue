@@ -6,8 +6,8 @@
                 <tr>
                     <th class="text-left"> Code </th>
                     <th class="text-left"> Título </th>
-                    <th class="text-center"> Dificuldade </th>
-                    <th class="text-center"> Resolvidas </th>
+                    <!-- <th class="text-center"> Dificuldade </th> -->
+                    <!-- <th class="text-center"> Resolvidas </th> -->
                     <th class="text-center"> Status </th>
                     <th></th>
                 </tr>
@@ -16,8 +16,8 @@
                 <tr v-for="item in atividades" :key="item.id">
                     <td>{{ item.atv_code }}</td>
                     <td>{{ item.atv_titulo }}</td>
-                    <td class="text-center">{{ item.atv_dificuldade }}</td>
-                    <td class="text-center">{{ item.atv_quantidade }}</td>
+                    <!-- <td class="text-center">{{ item.atv_dificuldade }}</td> -->
+                    <!-- <td class="text-center">{{ item.atv_quantidade }}</td> -->
                     <td class="text-center">
                         <chipRJH :status="item.atv_status"/>
                     </td>
@@ -48,7 +48,8 @@ export default {
     },
     data() {
         return {
-            listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
+            listAtividades: ['A', 'B', 'C', 'D', 'E']
+            // listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
         }
     },
     computed: {

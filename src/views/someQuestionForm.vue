@@ -6,11 +6,12 @@
         <v-row>
             <v-col cols="12" md="8">
                 <p style="white-space: pre-line;"> {{filterAtividade.atv_descricao}} 
-                    <v-img v-if="this.$route.params.id=='I'" height="250px" src="../assets/atv_i.png"></v-img>
+                    <v-img v-if="this.$route.params.id=='D'" height="250px" src="../assets/atv_4.webp"></v-img>
+                    <v-img v-if="this.$route.params.id=='E'" height="250px" src="../assets/atv_5.webp"></v-img>
                 </p>
-                <h3> Entrada </h3>
+                <h3 v-if="filterAtividade.atv_entrada" > Entrada </h3>
                 <div> {{filterAtividade.atv_entrada}} </div>
-                <h3> Saida </h3>
+                <h3 v-if="filterAtividade.atv_saida"> Saida </h3>
                 <div> {{filterAtividade.atv_saida}} </div>
                 
                 <v-row style="margin-top:10px" v-for="item in exemplos" :key="item.exe_id">
@@ -48,7 +49,7 @@
             </v-col>
             <v-col cols="12" md="4">
                 <v-textarea rows="20" v-model="codigo" background-color="light-blue" color="black"
-                    label="Código Fonte!">
+                    label="Resposta">
                 </v-textarea>
                 <v-btn variant="outlined" @click="sendSumissao()">Enviar!</v-btn>
             </v-col>

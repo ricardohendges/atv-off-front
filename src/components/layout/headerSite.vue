@@ -6,7 +6,7 @@
         </div>
         <v-spacer></v-spacer>
         <div>
-            <h1 class="subheading">MARATONA DE PROGRAMAÇÃO HORUS 2022</h1>
+            <h1 class="subheading">{{version}}</h1>
         </div>
         <v-spacer></v-spacer>
         <div>
@@ -24,6 +24,11 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+    data: () => {
+        return {
+            version: process.env.VUE_APP_TITLE
+        }
+    },
     methods:{
         ...mapActions('login', ['doLogout'])
     },

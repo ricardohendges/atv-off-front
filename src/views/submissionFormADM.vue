@@ -1,7 +1,32 @@
 <template>
   <formsTemplate>
     <h2>SUBMISSÕES</h2>
-    <v-select :items="statusPossiveis" multiple v-model="filterStatus" label="Novo Status Submissão"></v-select>
+    <v-form>
+      <v-container>
+        <v-row>
+          <v-col cols="12" sm="6" md="3">
+            <v-select :items="statusPossiveis" multiple chips v-model="filtros.status" clearable
+              label="Status Submissão" @update:model-value="aplicarFiltros()"></v-select>
+          </v-col>
+          <v-col cols="12" sm="6" md="3">
+            <v-select :items="atividadesPoss" multiple chips v-model="filtros.atividade" clearable
+              label="Atividade" @update:model-value="aplicarFiltros()"></v-select>
+          </v-col>
+          <v-col cols="12" sm="6" md="5">
+            <v-select :items="duplasNomes" multiple v-model="filtros.dupla" label="Alunos" clearable @update:model-value="aplicarFiltros()">
+              <template v-slot:selection="{ item, index }">
+                <v-chip v-if="index === 0">
+                  <span>{{ item.title }}</span>
+                </v-chip>
+                <span v-if="index === 1" class="grey--text text-caption">
+                  (+{{ filtros.dupla.length - 1 }} others)
+                </span>
+              </template>
+            </v-select>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-form>
     <v-table density="compact">
       <thead>
         <tr>
@@ -21,7 +46,7 @@
           <td>{{ item.atv_titulo }}</td>
           <td>{{ item.dup_nome }}</td>
           <td class="text-center">
-            <chipRJH :status="item.sub_status"/>
+            <chipRJH :status="item.sub_status" />
           </td>
           <td class="text-center">{{ (new Date(item.sub_data)).toLocaleString() }}</td>
           <td class="text-center">
@@ -42,9 +67,9 @@
     <v-dialog v-model="dialogChange">
       <v-card>
         <v-card-title class="text-h5">
-          Atualizar status da atividade ({{itemDialog.atv_code}}) - {{itemDialog.atv_titulo}}
-          <div>ID Submissão: {{itemDialog.sub_id}}</div>
-          <div>Usuário: {{itemDialog.dup_nome}}</div>
+          Atualizar status da atividade ({{ itemDialog.atv_code }}) - {{ itemDialog.atv_titulo }}
+          <div>ID Submissão: {{ itemDialog.sub_id }}</div>
+          <div>Usuário: {{ itemDialog.dup_nome }}</div>
         </v-card-title>
         <v-select :items="statusPossiveis" v-model="newStatus" label="Novo Status Submissão"></v-select>
         <v-card-text>
@@ -62,7 +87,7 @@
     <v-dialog v-model="dialog">
       <v-card>
         <v-card-title class="text-h5">
-          Atividade ({{itemDialog.atv_code}}) - {{itemDialog.atv_titulo}}
+          Atividade ({{ itemDialog.atv_code }}) - {{ itemDialog.atv_titulo }}
         </v-card-title>
         <v-card-text>
           <div>
@@ -88,12 +113,13 @@ export default {
   data() {
     return {
       localSubmissoes: null,
-      filterStatus: null,
       newStatus: null,
       statusPossiveis: ['- in queue -', 'Accepted', 'Wrong answer', 'Presentation error', 'Runtime error', 'Time limit exceeded'],
+      atividadesPoss: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
       dialog: false,
       dialogChange: false,
-      itemDialog: null
+      itemDialog: null,
+      filtros: { atividade: [], dupla: [], status: [] }
     }
   },
   components: {
@@ -101,16 +127,18 @@ export default {
     chipRJH
   },
   computed: {
-    ...mapGetters('submissao', ['submissao'])
+    ...mapGetters('submissao', ['submissao']),
+    ...mapGetters('dupla', ['duplasNomes'])
   },
   methods: {
     ...mapActions('submissao', ['getSubmissao', 'postSubmissao', 'patchSubmissao']),
+    ...mapActions('dupla', ['getDuplas']),
     sendSumissao() {
       this.dialogChange = false
       let params = {}
       params.sub_id = this.itemDialog.sub_id
       params.status = this.newStatus
-      this.patchSubmissao(params).then(()=> this.getSubmissao())
+      this.patchSubmissao(params).then(() => this.getSubmissao())
     },
     showCodigo(item) {
       this.dialog = true
@@ -119,21 +147,36 @@ export default {
     showChangeStatus(item) {
       this.dialogChange = true
       this.itemDialog = item
+    },
+    aplicarFiltros() {
+      this.localSubmissoes = this.submissao.sort((a,b) => {
+        if (a.atv_code > b.atv_code) return 1
+        else if (a.atv_code < b.atv_code) return -1
+        else return 0
+      })
+      if (this.filtros.status.length)
+        this.localSubmissoes = this.localSubmissoes.filter(a => this.filtros.status.includes(a.sub_status))
+      if (this.filtros.atividade.length)
+        this.localSubmissoes = this.localSubmissoes.filter(a => this.filtros.atividade.includes(a.atv_code))
+      if (this.filtros.dupla.length) {
+        console.log(this.filtros.dupla)
+        this.localSubmissoes = this.localSubmissoes.filter(a => {
+          return this.filtros.dupla.includes(a.dup_nome)})
+      }
     }
   },
   mounted() {
     this.getSubmissao()
+    this.getDuplas()
   },
   watch: {
-    submissao(){
+    submissao() {
+      // this.localSubmissoes = this.submissao.filter(a => a.atv_code == 'A')
       this.localSubmissoes = this.submissao
     },
-    filterStatus(){
-      if (this.filterStatus.length)
-        this.localSubmissoes = this.submissao.filter(a => this.filterStatus.includes(a.sub_status))
-      else 
-        this.localSubmissoes = this.submissao
-    }
+    filtros() {
+      this.aplicarFiltros()
+    },
   }
 }
 </script>

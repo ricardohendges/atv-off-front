@@ -30,10 +30,6 @@
                <span>
                   Copyright (c) 2022 Ricardo Jeferson Hendges
                </span>
-               <v-spacer></v-spacer>
-               <span>
-                  Designer: Odair Sehn
-               </span>
             </div>
          </v-card>
       </div>
