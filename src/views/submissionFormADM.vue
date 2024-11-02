@@ -44,7 +44,8 @@
           <td>{{ item.sub_id }}</td>
           <td>{{ item.atv_code }}</td>
           <td>{{ item.atv_titulo }}</td>
-          <td>{{ item.dup_nome }}</td>
+          <td>{{ item.dup_nome }} {{ item.sub_ip.replace('::ffff:', '') }}</td>
+          <!-- <td>{{ item.dup_nome }}</td> -->
           <td class="text-center">
             <chipRJH :status="item.sub_status" />
           </td>
@@ -115,7 +116,8 @@ export default {
       localSubmissoes: null,
       newStatus: null,
       statusPossiveis: ['- in queue -', 'Accepted', 'Wrong answer', 'Presentation error', 'Runtime error', 'Time limit exceeded'],
-      atividadesPoss: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
+      atividadesPoss: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
+      // atividadesPoss: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'],
       dialog: false,
       dialogChange: false,
       itemDialog: null,

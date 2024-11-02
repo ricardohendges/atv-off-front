@@ -6,6 +6,7 @@ import message from './modules/message'
 import atividade from './modules/atividade'
 import submissao from './modules/submissao'
 import rank from './modules/rank'
+import myIP from './modules/myIP'
 
 export default createStore({
   modules: {
@@ -14,6 +15,7 @@ export default createStore({
     atividade,
     login,
     submissao,
-    rank
+    rank,
+    myIP
   }
 })

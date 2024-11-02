@@ -19,17 +19,26 @@
         <tr v-for="item in rankList" :key="item.dup_id">
           <td>{{ item.dup_nome }}</td>
           <td class="text-center" v-for="itemAtv in listAtividades" :key="itemAtv" >
-            {{ item.atividades.find(a=> a.atv_code == itemAtv)?.qtdeTentado }}
-            <v-icon
-              v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Accepted'"
-              large
-              color="green darken-2"
-            >mdi-thumb-up</v-icon>
-            <v-icon
-              v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Tried'"
-              large
-              color="red-lighten-2"
-            >mdi-thumb-down</v-icon>
+            <div class="row">
+              <div v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status !== 'Queue'"  class="col">
+                {{ item.atividades.find(a=> a.atv_code == itemAtv)?.qtdeTentado }}
+              </div>
+              <div class="col">
+                <v-icon
+                  v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Accepted'"
+                  large
+                  color="green darken-2"
+                >mdi-thumb-up</v-icon>
+                <v-icon
+                  v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Erro'"
+                  large
+                  color="red-lighten-2"
+                >mdi-thumb-down</v-icon>
+                <v-img v-if="item.atividades.find(a=> a.atv_code == itemAtv)?.status == 'Queue'" 
+                  height="20px" src="../assets/loading.gif">
+                </v-img>
+              </div>
+            </div>
             <h6>{{ item.atividades.find(a=> a.atv_code == itemAtv)?.pontos }}</h6>
           </td>
           <td class="text-center">
@@ -53,7 +62,7 @@ export default {
   data() {
     return {
       // listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
-      listAtividades: ['A', 'B', 'C', 'D', 'E']
+      listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
     }
   },
   computed: {

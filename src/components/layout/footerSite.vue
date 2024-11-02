@@ -1,19 +1,32 @@
 <template>
-    <v-footer app padless>
-        <div class="text-center">
-            Copyright (c) 2022 Ricardo Jeferson Hendges
-        </div>
-        <v-spacer></v-spacer>
-        <div>{{userLogado.nome}}</div>
-    </v-footer>
+  <v-footer app padless>
+    <div class="text-center">
+      Copyright (c) 2022 Ricardo Jeferson Hendges
+    </div>
+    <v-spacer></v-spacer>
+    <div>{{ userLogado.nome }}</div>
+    {{ myPlataform }}
+    {{ myIP }}
+  </v-footer>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-    computed: {
-        ...mapGetters('login', ['userLogado'])
+  methods: {
+    ...mapActions('myIP', ['getIP']),
+  },
+  computed: {
+    ...mapGetters('login', ['userLogado']),
+    ...mapGetters('myIP', ['myIP']),
+    myPlataform() {
+      return navigator.userAgent;
     }
+  },
+  mounted() {
+    this.getIP();
+    console.log(navigator.platform);
+  }
 }
 </script>

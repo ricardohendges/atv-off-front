@@ -1,0 +1,1 @@
+export const myIP = (state) => state.myIP

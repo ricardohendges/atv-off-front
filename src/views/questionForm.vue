@@ -48,7 +48,7 @@ export default {
     },
     data() {
         return {
-            listAtividades: ['A', 'B', 'C', 'D', 'E']
+            listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'],
             // listAtividades: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']
         }
     },

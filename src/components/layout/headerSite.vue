@@ -9,8 +9,9 @@
             <h1 class="subheading">{{version}}</h1>
         </div>
         <v-spacer></v-spacer>
+            
         <div>
-            <h4>{{userLogado.nome}}</h4>
+            <h4>{{ userLogado.nome }}</h4>
         </div>
         <div style="color:white">
             <v-btn icon dark color="white" @click="doLogout()" to="/login">
@@ -29,7 +30,7 @@ export default {
             version: process.env.VUE_APP_TITLE
         }
     },
-    methods:{
+    methods: {
         ...mapActions('login', ['doLogout'])
     },
     computed: {

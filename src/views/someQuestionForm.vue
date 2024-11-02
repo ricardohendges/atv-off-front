@@ -6,8 +6,8 @@
         <v-row>
             <v-col cols="12" md="8">
                 <p style="white-space: pre-line;"> {{filterAtividade.atv_descricao}} 
-                    <v-img v-if="this.$route.params.id=='D'" height="250px" src="../assets/atv_4.webp"></v-img>
-                    <v-img v-if="this.$route.params.id=='E'" height="250px" src="../assets/atv_5.webp"></v-img>
+                    <!-- <v-img v-if="this.$route.params.id=='D'" height="250px" src="../assets/atv_4.webp"></v-img>
+                    <v-img v-if="this.$route.params.id=='E'" height="250px" src="../assets/atv_5.webp"></v-img> -->
                 </p>
                 <h3 v-if="filterAtividade.atv_entrada" > Entrada </h3>
                 <div> {{filterAtividade.atv_entrada}} </div>
